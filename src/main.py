@@ -12,8 +12,8 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QFileD
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
 # Load datasets
-ports_data = pd.read_csv("D:/DOCUMENTS/SEM IV/ADSA PROJ/ports_data.csv", encoding="Latin-1")
-ice_data = xr.open_dataset("D:/DOCUMENTS/SEM IV/ADSA PROJ/FMI-BAL-SEAICE_CONC-L4-NRT-OBS_1715739350131.nc")
+ports_data = pd.read_csv("ports_data.csv", encoding="Latin-1")
+ice_data = xr.open_dataset("FMI-BAL-SEAICE_CONC-L4-NRT-OBS_1715739350131.nc")
 
 def read_shipping_data(file_path):
     df = pd.read_excel(file_path)
@@ -227,7 +227,7 @@ class StockIntakeWindow(QMainWindow):
         end_port = self.end_port_entry.text()
         max_weight_limit = int(self.max_weight_entry.text())
 
-        file_path = "D:/DOCUMENTS/SEM IV/ADSA PROJ/shipping_data(1).xlsx"
+        file_path = "shipping_data(1).xlsx"
         shipping_data = read_shipping_data(file_path)
         filtered_items = [item for item in shipping_data if str(item["end_port"]).strip() == end_port.strip()]
         sorted_items, selected_names, selected_pw_ratios, total_value = knapsack_greedy(filtered_items, max_weight_limit)
@@ -345,7 +345,7 @@ class LoginPage(QWidget):
 
         # Background Image
         self.background_label = QLabel(self)
-        self.background_label.setPixmap(QPixmap("C:/Users/bhava/Downloads/bg1.jpg"))
+        self.background_label.setPixmap(QPixmap("bg1.jpg"))
         self.background_label.setGeometry(0, 0, 400, 300)
 
         # Company Name Label
@@ -419,9 +419,9 @@ class NextPage(QWidget):
         self.button3.setFixedSize(490, 350)
 
         # Set buttons icons
-        self.button1.setIcon(QIcon("C:/Users/bhava/Downloads/datasetlogo.png"))  # Replace with the path to your logo
-        self.button2.setIcon(QIcon("C:/Users/bhava/Downloads/route.png"))  # Replace with the path to your logo
-        self.button3.setIcon(QIcon("C:/Users/bhava/Downloads/cargo.png"))  # Replace with the path to your logo
+        self.button1.setIcon(QIcon("datasetlogo.png"))  # Replace with the path to your logo
+        self.button2.setIcon(QIcon("route.png"))  # Replace with the path to your logo
+        self.button3.setIcon(QIcon("cargo.png"))  # Replace with the path to your logo
 
         # Set icon sizes
         self.button1.setIconSize(self.button1.size())
